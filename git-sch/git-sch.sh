@@ -13,7 +13,7 @@ FileNm="$Ymd".md
 
 mkdir -p $FileDir
 
-echo "### $Ymd 일기" >> $FileDir/$FileNm
+echo "### $Ymd" >> $FileDir/$FileNm
 
 cd $GitDir
 git add .
