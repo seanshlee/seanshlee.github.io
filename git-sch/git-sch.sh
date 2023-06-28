@@ -1,21 +1,17 @@
-Y=$(date +%Y)
-M=$(date +%m)
-D=$(date +%d)
-
-Ym=$Y-$M
-Ymd=$Y-$M-$D
 GitRep="seanshlee.github.io"
 
 HomeDir="/home/sehan"
-GitDir="$HomeDir/$GitRep"
-FileDir="$HomeDir/$GitRep/$Ym"
-FileNm="$Ymd".md
+Repo_path="$HomeDir/$GitRep"
 
-mkdir -p $FileDir
+Web_root=/usr/share/nginx/html
 
-echo "### $Ymd" >> $FileDir/$FileNm
+cd $Repo_path
+git fetch --all
+git reset --hard origin/main
 
-cd $GitDir
-git add .
-git commit -m "commit $FileNm"
-git push origin main
+cp -R $Repo_path/* $Web_root
+
+service nginx1 restart
+
+
+
